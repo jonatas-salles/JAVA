@@ -48,4 +48,14 @@ public class TodoController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @DeleteMapping
+    public ResponseEntity<?> deleteTask(@RequestBody TodoRequestDTO data) {
+        Optional<Todo> optTodo = repository.findById(data.id());
+        if (optTodo.isPresent()) {
+            repository.deleteById(data.id());
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
 }
