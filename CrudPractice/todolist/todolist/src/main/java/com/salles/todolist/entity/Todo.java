@@ -9,12 +9,13 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 @Getter
+@Setter
 public class Todo {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String description;
-    private boolean accomplished;
+    private Boolean accomplished;
     private int priority;
 
     public Todo(TodoRequestDTO data) {
